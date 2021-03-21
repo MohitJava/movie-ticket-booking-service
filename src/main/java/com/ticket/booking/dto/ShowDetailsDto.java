@@ -6,10 +6,6 @@ public class ShowDetailsDto {
 	
 	private ShowDto show;
 	
-	private double totalCollection;
-	
-	private double avarageCollection;
-	
 	private int totalBookedTickets;
 
 	public long getShowDetailsId() {
@@ -28,21 +24,6 @@ public class ShowDetailsDto {
 		this.show = show;
 	}
 
-	public double getTotalCollection() {
-		return totalCollection;
-	}
-
-	public void setTotalCollection(double totalCollection) {
-		this.totalCollection = totalCollection;
-	}
-
-	public double getAvarageCollection() {
-		return avarageCollection;
-	}
-
-	public void setAvarageCollection(double avarageCollection) {
-		this.avarageCollection = avarageCollection;
-	}
 
 	public int getTotalBookedTickets() {
 		return totalBookedTickets;
@@ -52,12 +33,10 @@ public class ShowDetailsDto {
 		this.totalBookedTickets = totalBookedTickets;
 	}
 
-	public ShowDetailsDto(long showDetailsId, ShowDto show, double totalCollection, double avarageCollection,
-			int totalBookedTickets) {
+	public ShowDetailsDto(long showDetailsId, ShowDto show, int totalBookedTickets) {
 		this.showDetailsId = showDetailsId;
 		this.show = show;
-		this.totalCollection = totalCollection;
-		this.avarageCollection = avarageCollection;
 		this.totalBookedTickets = totalBookedTickets;
-	}	
+	}
+		
 }

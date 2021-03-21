@@ -23,9 +23,4 @@ public class TicketBookResposne {
 	public void setPrice(double price) {
 		this.price = price;
 	}
-	@Override
-	public String toString() {
-		return "TicketBookResposne [status=" + status + ", message=" + message + ", price=" + price + "]";
-	}
-	
 }

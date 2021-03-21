@@ -11,8 +11,11 @@ public interface ShowService {
 	/* Method Overloaded - 1 */
 	public List<ShowDto> fetchAvaliabeShows(String showName, String requestedDate);
 
-	/* Method Overloaded - 1 */
+	/* Method Overloaded - 2 */
 	public List<ShowDto> fetchAvaliabeShows(String requestedDate);
+	
+	/* Method Overloaded - 3 */
+	public List<ShowDto> fetchAvaliabeShowsByName(String showName);
 
 	Optional<ShowDetailsDto> fetchShowDetils(long showId);
 }

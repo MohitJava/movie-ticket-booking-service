@@ -7,9 +7,7 @@ public class ShowDto {
 	private long showId;
 	
 	private String showName;
-	
-	private String timing;
-	
+		
 	private LocalDate date;
 	
 	private int price;
@@ -30,15 +28,6 @@ public class ShowDto {
 
 	public void setShowName(String showName) {
 		this.showName = showName;
-	}
-
-
-	public String getTiming() {
-		return timing;
-	}
-
-	public void setTiming(String timing) {
-		this.timing = timing;
 	}
 
 	public String getStatus() {
@@ -65,10 +54,9 @@ public class ShowDto {
 		this.price = price;
 	}
 
-	public ShowDto(long showId, String showName, String timing, LocalDate date, int price, String status) {
+	public ShowDto(long showId, String showName, LocalDate date, int price, String status) {
 		this.showId = showId;
 		this.showName = showName;
-		this.timing = timing;
 		this.date = date;
 		this.price = price;
 		this.status = status;
@@ -77,5 +65,13 @@ public class ShowDto {
 	public ShowDto(long showId) {
 		this.showId = showId;
 	}
+
+	@Override
+	public String toString() {
+		return "ShowDto [showId=" + showId + ", showName=" + showName + ", date=" + date
+				+ ", price=" + price + ", status=" + status + "]";
+	}
+	
+	
 	
 }

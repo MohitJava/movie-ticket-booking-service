@@ -21,16 +21,19 @@ public class TicketDetailsServiceImpl implements TicketDetailsService{
 	@Autowired
 	ShowService showService;
 
+	/* Check show is valid, can book a ticket and then book a ticket */
 	@Override
 	public TicketBookResposne checkAndBookTicket(TicketDetailsDto ticketDetailsDto) {
 		TicketBookResposne response = new TicketBookResposne();
 		Optional<ShowDetailsDto> optionalShowDetailsDto = 
 				showService.fetchShowDetils(ticketDetailsDto.getShow().getShowId());
+		/* Check provided show is valid show or invalid show */
 		if(optionalShowDetailsDto.isPresent()) {			
 			ShowDetailsDto showDetailsDto = optionalShowDetailsDto.get();
 			int ticketsAskedFor = showDetailsDto.getTotalBookedTickets() + ticketDetailsDto.getQuantity();
-			if(!"COMPLETE".equalsIgnoreCase(showDetailsDto.getShow().getStatus())) {
-				if(ticketsAskedFor > 10 &&  ticketsAskedFor <= 30)
+			/* If all seats are sold so can't book more tickets */
+			if(ticketsAskedFor <= 30) {
+				if(ticketsAskedFor > 10 )
 					showDetailsDto.getShow().setStatus("COMPLETE");
 				ticketDetailsRepository.bookTicket(ticketDetailsDto);
 				double paybleAmount = ticketDetailsDto.getQuantity() * showDetailsDto.getShow().getPrice();
@@ -38,6 +41,7 @@ public class TicketDetailsServiceImpl implements TicketDetailsService{
 						" tickets successfully booked for "+showDetailsDto.getShow().getShowName());
 				response.setStatus("BOOKED");
 				response.setPrice(paybleAmount);
+				/* We need to save this value in the database(mocked)*/
 				showDetailsDto.setTotalBookedTickets(ticketsAskedFor);
 			}else {
 				response.setMessage("Provided show is full, no seats avaliable.");
