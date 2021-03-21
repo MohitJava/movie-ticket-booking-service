@@ -44,6 +44,7 @@ public class ShowServiceImpl implements ShowService{
 				.filter(showdetails -> showdetails.getShow().getShowId() == showId).findAny();
 	}
 
+	/* Filter All shows by Show Name (filter using stream & Lambda) */
 	@Override
 	public List<ShowDto> fetchAvaliabeShowsByName(String showName) {
 		return showRepository.fetchAllShows().stream()
